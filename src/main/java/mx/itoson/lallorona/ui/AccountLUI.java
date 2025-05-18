@@ -10,7 +10,9 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import javax.swing.DefaultListModel;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import mx.itoson.lallorona.entities.BankStatement;
 import mx.itoson.lallorona.entities.Transaction;
@@ -44,12 +46,16 @@ public class AccountLUI extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         lblBank = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        lblAccountnumber = new javax.swing.JLabel();
+        lblcurrency = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblAccounHolder = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblProduct.setBackground(new java.awt.Color(0, 102, 102));
         lblProduct.setFont(new java.awt.Font("Times New Roman", 3, 48)); // NOI18N
-        lblProduct.setForeground(new java.awt.Color(255, 255, 255));
+        lblProduct.setForeground(new java.awt.Color(204, 204, 204));
         lblProduct.setText("...");
 
         btnSelectJson.setText("Select JSON");
@@ -87,48 +93,77 @@ public class AccountLUI extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
 
+        lblAccountnumber.setBackground(new java.awt.Color(0, 102, 102));
+        lblAccountnumber.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        lblAccountnumber.setForeground(new java.awt.Color(153, 153, 153));
+        lblAccountnumber.setText("...");
+
+        lblcurrency.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        lblcurrency.setForeground(new java.awt.Color(153, 153, 153));
+        lblcurrency.setText("...");
+
+        tblAccounHolder.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Accoun Holder"
+            }
+        ));
+        jScrollPane2.setViewportView(tblAccounHolder);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblAccountnumber, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblcurrency, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(48, 48, 48)
-                                .addComponent(jLabel1))
-                            .addComponent(jLabel2)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(14, 14, 14)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(btnSelectJson, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 681, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(lblBank)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(153, 153, 153)
-                .addComponent(lblProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 687, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblBank))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 821, Short.MAX_VALUE)
+                                .addComponent(jScrollPane1))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(335, 335, 335)
+                        .addComponent(btnSelectJson, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(lblBank)
-                .addGap(7, 7, 7)
-                .addComponent(lblProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
+                .addGap(11, 11, 11)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblBank))
+                .addGap(18, 18, 18)
+                .addComponent(lblAccountnumber)
+                .addGap(18, 18, 18)
+                .addComponent(lblcurrency)
+                .addGap(51, 51, 51)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addGap(189, 189, 189)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(28, 28, 28)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btnSelectJson, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59))
+                .addGap(214, 214, 214))
         );
 
         pack();
@@ -152,18 +187,30 @@ public class AccountLUI extends javax.swing.JFrame {
             String contenido = content.toString();
             BankStatement a = BankStatement.deserialized(contenido);
             lblProduct.setText(a.getProduct());
-                        
+            lblAccountnumber.setText(Integer.toString(a.getAccountNumber()));
+            lblcurrency.setText(a.getCurrency());
+            
+       
+            DefaultTableModel m =(DefaultTableModel) tblAccounHolder.getModel();
+            m.setRowCount(0);
+            m.addRow(new Object[]{
+            
+            });
+            
+                                                
+                      
             DefaultTableModel model =(DefaultTableModel) tblTransactions.getModel();
             model.setRowCount(0);
+            List<Transaction> txs = new ArrayList<>( a.getTransactions() );
+            txs.sort( Comparator.comparing(Transaction::getDate) );
             SimpleDateFormat dateFormat= new SimpleDateFormat("dd'/'MM'/'yyyy");// se puede cambiar el formato del año
-         
-                            for(Transaction t: a.getTransactions()){
-                            model.addRow(new Object[]{
-                                dateFormat.format(t.getDate()),
-                                t.getDescription(),
-                                t.getReference(),
-                                "$" +t.getAmount(),
-                                t.getType(),                            
+            for (Transaction t : txs) {
+            model.addRow(new Object[]{
+                 dateFormat.format(t.getDate()),
+                 t.getDescription(),
+                 t.getReference(),
+                 "$" + t.getAmount(),
+                 t.getType(),                           
                             });                  
         }
  }
@@ -213,8 +260,12 @@ public class AccountLUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblAccountnumber;
     private javax.swing.JLabel lblBank;
     private javax.swing.JLabel lblProduct;
+    private javax.swing.JLabel lblcurrency;
+    private javax.swing.JTable tblAccounHolder;
     private javax.swing.JTable tblTransactions;
     // End of variables declaration//GEN-END:variables
 }
