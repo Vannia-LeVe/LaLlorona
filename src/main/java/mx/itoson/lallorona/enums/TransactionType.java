@@ -4,6 +4,8 @@
  */
 package mx.itoson.lallorona.enums;
 
+import com.google.gson.annotations.SerializedName;
+
 
 
 /**
@@ -11,9 +13,9 @@ package mx.itoson.lallorona.enums;
  * @author Vanny
  */
 public enum TransactionType {
-//@SerializedName("1")    
+@SerializedName("1")    
     INCOME,
-//@SerializedName("2")     
+@SerializedName("2")     
     EXPENSE,
     
 }

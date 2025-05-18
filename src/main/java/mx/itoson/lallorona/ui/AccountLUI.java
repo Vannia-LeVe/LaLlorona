@@ -12,8 +12,8 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import javax.swing.DefaultListModel;
 import javax.swing.table.DefaultTableModel;
-import mx.itoson.lallorona.entities.Account;
-import mx.itoson.lallorona.entities.Transactions;
+import mx.itoson.lallorona.entities.BankStatement;
+import mx.itoson.lallorona.entities.Transaction;
 
 /**
  *
@@ -41,14 +41,14 @@ public class AccountLUI extends javax.swing.JFrame {
         btnSelectJson = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblTransactions = new javax.swing.JTable();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        lstHolder = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
+        lblBank = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblProduct.setBackground(new java.awt.Color(0, 102, 102));
-        lblProduct.setFont(new java.awt.Font("Times New Roman", 3, 60)); // NOI18N
+        lblProduct.setFont(new java.awt.Font("Times New Roman", 3, 48)); // NOI18N
         lblProduct.setForeground(new java.awt.Color(255, 255, 255));
         lblProduct.setText("...");
 
@@ -77,55 +77,58 @@ public class AccountLUI extends javax.swing.JFrame {
         tblTransactions.setSelectionForeground(new java.awt.Color(255, 51, 51));
         jScrollPane1.setViewportView(tblTransactions);
 
-        lstHolder.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Code:...", "Name:...", "Address:...", "City:...", "ID:...", "Zip code: ..." };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane2.setViewportView(lstHolder);
-
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 33)); // NOI18N
         jLabel1.setText("DETALLE DE MOVIMIENTOS REALIZADOS  ");
+
+        lblBank.setBackground(new java.awt.Color(255, 255, 255));
+        lblBank.setFont(new java.awt.Font("Times New Roman", 1, 65)); // NOI18N
+        lblBank.setForeground(new java.awt.Color(0, 51, 204));
+        lblBank.setText("BBVA");
+
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnSelectJson, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(90, 90, 90))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 689, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(14, 14, 14)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 701, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(128, 128, 128)
-                        .addComponent(lblProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(125, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(48, 48, 48)
+                                .addComponent(jLabel1))
+                            .addComponent(jLabel2)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnSelectJson, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 681, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lblBank)))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(153, 153, 153)
+                .addComponent(lblProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(lblProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(lblBank)
+                .addGap(7, 7, 7)
+                .addComponent(lblProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(189, 189, 189)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSelectJson, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(59, 59, 59))
         );
 
         pack();
@@ -147,22 +150,21 @@ public class AccountLUI extends javax.swing.JFrame {
                 content.append(line).append("\n");
                 }
             String contenido = content.toString();
-            Account a = Account.deserialized(contenido);
-            
+            BankStatement a = BankStatement.deserialized(contenido);
             lblProduct.setText(a.getProduct());
+                        
             DefaultTableModel model =(DefaultTableModel) tblTransactions.getModel();
             model.setRowCount(0);
             SimpleDateFormat dateFormat= new SimpleDateFormat("dd'/'MM'/'yyyy");// se puede cambiar el formato del año
          
-                            for(Transactions t: a.getTransactions()){
+                            for(Transaction t: a.getTransactions()){
                             model.addRow(new Object[]{
                                 dateFormat.format(t.getDate()),
                                 t.getDescription(),
                                 t.getReference(),
                                 "$" +t.getAmount(),
                                 t.getType(),                            
-                            });           
-                         
+                            });                  
         }
  }
         catch (IOException ex) {
@@ -209,10 +211,10 @@ public class AccountLUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSelectJson;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblBank;
     private javax.swing.JLabel lblProduct;
-    private javax.swing.JList<String> lstHolder;
     private javax.swing.JTable tblTransactions;
     // End of variables declaration//GEN-END:variables
 }
