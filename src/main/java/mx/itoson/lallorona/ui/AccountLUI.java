@@ -192,6 +192,7 @@ public class AccountLUI extends javax.swing.JFrame {
             
        
             DefaultTableModel m =(DefaultTableModel) tblAccounHolder.getModel();
+            
             m.setRowCount(0);
             m.addRow(new Object[]{
             
