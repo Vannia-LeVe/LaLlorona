@@ -8,7 +8,7 @@ import java.util.Date;
 import mx.itoson.lallorona.enums.TransactionType;
 
 /**
- *
+ * This class represents a transaction information containing information like date, description, amount or type of transaction
  * @author Vanny
  */
 public class Transaction {

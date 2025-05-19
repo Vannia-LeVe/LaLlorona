@@ -11,7 +11,7 @@ import java.util.List;
 
 
 /**
- *
+ * This class contains all the information about te moves made on the differents acounts like the currency, acount number and list of transactions
  * @author Vanny
  */
 public class BankStatement {
@@ -95,7 +95,11 @@ public class BankStatement {
     private AccountHolder accountHolder;
     private List<Transaction> transactions;
     
-    
+    /**
+     * BankStatement convert the json text to an object call BankStatement
+     * @param json receives a String in JSON format as a parameter and returns an object of type BankStatement
+     * @return returns the BankStatement object, either with the correct data
+     */
     public static BankStatement deserialized(String json){
     
     BankStatement a= new BankStatement();

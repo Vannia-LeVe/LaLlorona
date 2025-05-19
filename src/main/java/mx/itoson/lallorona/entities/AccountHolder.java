@@ -7,7 +7,8 @@ package mx.itoson.lallorona.entities;
 import com.google.gson.annotations.SerializedName;
 
 /**
- *
+ * This class contains informatio about the client of the bank, in that information
+ * we can find the name, code and adress
  * @author Vanni
  */
 public class AccountHolder {
