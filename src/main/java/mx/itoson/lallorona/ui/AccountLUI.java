@@ -16,7 +16,7 @@ import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import mx.itoson.lallorona.entities.BankStatement;
 import mx.itoson.lallorona.entities.Transaction;
-
+import mx.itoson.lallorona.entities.AccountHolder;
 /**
  *
  * @author Vanni
@@ -104,12 +104,7 @@ public class AccountLUI extends javax.swing.JFrame {
 
         tblAccounHolder.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null}
+
             },
             new String [] {
                 "Accoun Holder"
@@ -170,7 +165,7 @@ public class AccountLUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSelectJsonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectJsonActionPerformed
- FileDialog fileDialog = new FileDialog(this, "Select json file", FileDialog.LOAD);
+        FileDialog fileDialog = new FileDialog(this, "Select json file", FileDialog.LOAD);
         fileDialog.setVisible(true);
         
         String directory = fileDialog.getDirectory();
@@ -186,20 +181,20 @@ public class AccountLUI extends javax.swing.JFrame {
                 }
             String contenido = content.toString();
             BankStatement a = BankStatement.deserialized(contenido);
+            AccountHolder h = a.getAccountHolder();
             lblProduct.setText(a.getProduct());
-            lblAccountnumber.setText(Integer.toString(a.getAccountNumber()));
-            lblcurrency.setText(a.getCurrency());
-            
-       
+            lblAccountnumber.setText("Accountnumber: " + a.getAccountNumber());
+            lblcurrency.setText("currency: " + a.getCurrency());
             DefaultTableModel m =(DefaultTableModel) tblAccounHolder.getModel();
+            m.addRow(new Object[]{ "Código: " +           h.getCode() });
+            m.addRow(new Object[]{ "Nombre: " +           h.getName() });
+            m.addRow(new Object[]{ "Dirección: " +        h.getAddress() });
+            m.addRow(new Object[]{ "Ciudad: " +           h.getCity() });
+            m.addRow(new Object[]{ "RFC: " +              h.getTaxpayerId() });
+            m.addRow(new Object[]{ "Código Postal: "  +   h.getZipCode() });
             
-            m.setRowCount(0);
-            m.addRow(new Object[]{
             
-            });
             
-                                                
-                      
             DefaultTableModel model =(DefaultTableModel) tblTransactions.getModel();
             model.setRowCount(0);
             List<Transaction> txs = new ArrayList<>( a.getTransactions() );

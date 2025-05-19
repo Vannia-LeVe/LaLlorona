@@ -10,7 +10,7 @@ import com.google.gson.annotations.SerializedName;
  *
  * @author Vanni
  */
-class AccountHolder {
+public class AccountHolder {
 
     /**
      * @return the code

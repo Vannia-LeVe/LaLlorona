@@ -91,7 +91,7 @@ public class BankStatement {
     //@SerializedName("account-number")
     private int accountNumber;
     private String currency;
-    //@SerializedName("account-holder")
+    @SerializedName("account-holder")
     private AccountHolder accountHolder;
     private List<Transaction> transactions;
     
