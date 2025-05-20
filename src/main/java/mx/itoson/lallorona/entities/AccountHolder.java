@@ -102,6 +102,7 @@ public class AccountHolder {
     private String city;
     @SerializedName("taxpayer-id")
     private String taxpayerId;
+    @SerializedName("zip-code")
     private int zipCode;
     
     

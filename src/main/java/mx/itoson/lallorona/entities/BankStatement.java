@@ -61,14 +61,14 @@ public class BankStatement {
     /**
      * @return the accountNumber
      */
-    public int getAccountNumber() {
+    public Long getAccountNumber() {
         return accountNumber;
     }
 
     /**
      * @param accountNumber the accountNumber to set
      */
-    public void setAccountNumber(int accountNumber) {
+    public void setAccountNumber(Long accountNumber) {
         this.accountNumber = accountNumber;
     }
 
@@ -88,8 +88,8 @@ public class BankStatement {
 
  
     private String product;
-    //@SerializedName("account-number")
-    private int accountNumber;
+    @SerializedName("account-number")
+    private Long accountNumber;
     private String currency;
     @SerializedName("account-holder")
     private AccountHolder accountHolder;
