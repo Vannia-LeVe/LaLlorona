@@ -187,15 +187,15 @@ public class AccountLUI extends javax.swing.JFrame {
             BankStatement a = BankStatement.deserialized(contenido);
             AccountHolder h = a.getAccountHolder();
             lblProduct.setText(a.getProduct());
-            lblAccountnumber.setText("Accountnumber: " + a.getAccountNumber());
-            lblcurrency.setText("currency: " + a.getCurrency());
+            lblAccountnumber.setText("Account Number: " + a.getAccountNumber());
+            lblcurrency.setText("Currency: " + a.getCurrency());
             DefaultTableModel m =(DefaultTableModel) tblAccounHolder.getModel();
-            m.addRow(new Object[]{ "Código: " +           h.getCode() });
-            m.addRow(new Object[]{ "Nombre: " +           h.getName() });
-            m.addRow(new Object[]{ "Dirección: " +        h.getAddress() });
-            m.addRow(new Object[]{ "Ciudad: " +           h.getCity() });
-            m.addRow(new Object[]{ "RFC: " +              h.getTaxpayerId() });
-            m.addRow(new Object[]{ "Código Postal: "  +   h.getZipCode() });
+            m.addRow(new Object[]{ "Code: " +           h.getCode() });
+            m.addRow(new Object[]{ "Name: " +           h.getName() });
+            m.addRow(new Object[]{ "Adress: " +        h.getAddress() });
+            m.addRow(new Object[]{ "City: " +           h.getCity() });
+            m.addRow(new Object[]{ "Taxpayer-id: " +              h.getTaxpayerId() });
+            m.addRow(new Object[]{ "Zip code: "  +   h.getZipCode() });
             
             
             
