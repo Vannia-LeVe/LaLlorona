@@ -14,6 +14,20 @@ import mx.itoson.lallorona.enums.TransactionType;
 public class Transaction {
 
     /**
+     * @return the balance
+     */
+    public float getBalance() {
+        return balance;
+    }
+
+    /**
+     * @param balance the balance to set
+     */
+    public void setBalance(float balance) {
+        this.balance = balance;
+    }
+
+    /**
      * @return the date
      */
     public Date getDate() {
@@ -88,6 +102,7 @@ public class Transaction {
    private String reference;
    private float amount;
    private TransactionType type;
+   private float balance;
 
    
    

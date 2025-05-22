@@ -17,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 import mx.itoson.lallorona.entities.BankStatement;
 import mx.itoson.lallorona.entities.Transaction;
 import mx.itoson.lallorona.entities.AccountHolder;
+import mx.itoson.lallorona.enums.TransactionType;
 /**
  * This class execute and display all the information contained on the json doc, showing all the data about the bank movements, their dates and other information
  * @author Vanni
@@ -70,13 +71,13 @@ public class AccountLUI extends javax.swing.JFrame {
         tblTransactions.setForeground(new java.awt.Color(255, 255, 255));
         tblTransactions.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Date", "Description", "Reference", "Amount", "Type"
+                "Date", "Description", "Reference", "Amount", "Type", "Balance"
             }
         ));
         tblTransactions.setGridColor(new java.awt.Color(102, 102, 102));
@@ -198,19 +199,34 @@ public class AccountLUI extends javax.swing.JFrame {
             m.addRow(new Object[]{ "Zip code: "  +   h.getZipCode() });
             
             
+            TransactionType l = TransactionType.EXPENSE;
             
+            float totalbalance = (float) 50000.000;
             DefaultTableModel model =(DefaultTableModel) tblTransactions.getModel();
             model.setRowCount(0);
             List<Transaction> txs = new ArrayList<>( a.getTransactions() );
             txs.sort( Comparator.comparing(Transaction::getDate) );
             SimpleDateFormat dateFormat= new SimpleDateFormat("dd'/'MM'/'yyyy");// se puede cambiar el formato del año
             for (Transaction t : txs) {
+            if (t.getType() == l ){
+                
+                totalbalance -= t.getAmount();
+                t.setBalance(totalbalance);
+            }else{
+                
+                
+                totalbalance += t.getAmount();
+                t.setBalance(totalbalance);
+            }
+           
             model.addRow(new Object[]{
                  dateFormat.format(t.getDate()),
                  t.getDescription(),
                  t.getReference(),
                  "$" + t.getAmount(),
-                 t.getType(),                           
+                 t.getType(),
+                 t.getBalance()
+                 
                             });                  
         }
  }

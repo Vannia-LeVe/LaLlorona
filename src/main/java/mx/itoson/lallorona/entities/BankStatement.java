@@ -95,6 +95,7 @@ public class BankStatement {
     private AccountHolder accountHolder;
     private List<Transaction> transactions;
     
+    
     /**
      * BankStatement convert the json text to an object call BankStatement
      * @param json receives a String in JSON format as a parameter and returns an object of type BankStatement
