@@ -323,24 +323,28 @@ public class AccountUi1 extends javax.swing.JFrame {
             while ((line = reader.readLine()) != null) {
                 content.append(line).append("\n");
                 }
-            //
+            // Convert the content to a String
             String contenido = content.toString();
+            // Deserialize JSON content into a BankStatement object
             BankStatement a = BankStatement.deserialized(contenido);
+            // Get the account holder details
             AccountHolder h = a.getAccountHolder();
             
             //Bar-Code
             lblBarCode.setText("||| ||||| |||| |||||||");
             
-            //Implementación del Random para agregar el número al codigo de barras.
+            // Generate a random number to display as the code
             Random rand = new Random();
             long randomNum = rand.nextInt(1000000000)+1;
             lblCode.setText("Code: " +randomNum);
+            // Set product, account number and currency labels
             lblProduct.setText(a.getProduct());
             lblAccountnumber.setText("Account Number: " + a.getAccountNumber());
             lblcurrency.setText("Currency: " + a.getCurrency());
             lblInteres.setText("Ha ocurrido un error con el cálculo de nuestra tasa de intereses.\n" +
                 "Recuerda que es del 3%.\n" +
                 "Consulta de forma presencial.");
+            // Add account holder info to the tblAccounHolder table
             DefaultTableModel m =(DefaultTableModel) tblAccounHolder.getModel();
             m.addRow(new Object[]{ "Code: " +           h.getCode() });
             m.addRow(new Object[]{ "Name: " +           h.getName() });
@@ -349,27 +353,31 @@ public class AccountUi1 extends javax.swing.JFrame {
             m.addRow(new Object[]{ "Taxpayer-id: " +              h.getTaxpayerId() });
             m.addRow(new Object[]{ "Zip code: "  +   h.getZipCode() });
             
-            //
+            // Define the transaction type to filter (Expenses)
             TransactionType l = TransactionType.EXPENSE;
-            
+            // Initialize total balance for calculations
             float totalbalance = (float) 50000.000;
+            // Clear the transactions table before filling it
             DefaultTableModel model =(DefaultTableModel) tblTransactions.getModel();
             model.setRowCount(0);
+            // Get the list of transactions and sort them by date
             List<Transaction> txs = new ArrayList<>( a.getTransactions() );
             txs.sort( Comparator.comparing(Transaction::getDate) );
-            SimpleDateFormat dateFormat= new SimpleDateFormat("dd'/'MM'/'yyyy");// se puede cambiar el formato del año
+            // Define the date format for displaying transaction dates
+            SimpleDateFormat dateFormat= new SimpleDateFormat("dd'/'MM'/'yyyy");
+            // Loop through transactions to calculate running balance and display them
             for (Transaction t : txs) {
             if (t.getType() == l ){
-                
+                 // If transaction is an expense, subtract amount from total balance
                 totalbalance -= t.getAmount();
                 t.setBalance(totalbalance);
             }else{
-                
+                // If transaction is income, add amount to total balance
                 
                 totalbalance += t.getAmount();
                 t.setBalance(totalbalance);
             }
-           
+           // Add transaction data as a new row in the transactions table
             model.addRow(new Object[]{
                  dateFormat.format(t.getDate()),
                  t.getDescription(),
@@ -382,13 +390,14 @@ public class AccountUi1 extends javax.swing.JFrame {
         }
  }
         catch (IOException ex) {
+            // Handle and print any IOException during file reading
                       System.out.println("Error: " + ex.getMessage());
                     }
         
     }      }//GEN-LAST:event_btnSelectJsonActionPerformed
 
     private void btnCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCleanActionPerformed
-        //Se encarga de limpiar el JSON anterior
+        //It is responsible for cleaning the previous JSON
         lblBarCode.setText(""); 
         lblCode.setText("Code: ");
         lblProduct.setText("BANK STATEMENT");
