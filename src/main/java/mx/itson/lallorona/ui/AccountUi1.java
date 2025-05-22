@@ -60,6 +60,7 @@ public class AccountUi1 extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         lblBarCode = new javax.swing.JLabel();
         lblCode = new javax.swing.JLabel();
+        lblInteres = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -116,7 +117,7 @@ public class AccountUi1 extends javax.swing.JFrame {
                 .addComponent(btnSelectJson, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnClean, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(346, 346, 346))
+                .addGap(22, 22, 22))
         );
 
         jplWhite.setBackground(new java.awt.Color(255, 255, 255));
@@ -214,6 +215,8 @@ public class AccountUi1 extends javax.swing.JFrame {
         lblCode.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         lblCode.setForeground(new java.awt.Color(51, 51, 51));
 
+        lblInteres.setForeground(new java.awt.Color(51, 51, 51));
+
         javax.swing.GroupLayout jplWhiteLayout = new javax.swing.GroupLayout(jplWhite);
         jplWhite.setLayout(jplWhiteLayout);
         jplWhiteLayout.setHorizontalGroup(
@@ -228,15 +231,12 @@ public class AccountUi1 extends javax.swing.JFrame {
                     .addGroup(jplWhiteLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(lblProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(65, 65, 65)
                         .addComponent(lblBank, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jplWhiteLayout.createSequentialGroup()
-                        .addGroup(jplWhiteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jplWhiteLayout.createSequentialGroup()
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 31, Short.MAX_VALUE))
-                            .addGroup(jplWhiteLayout.createSequentialGroup()
+                        .addGroup(jplWhiteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jplWhiteLayout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addGroup(jplWhiteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblcurrency, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -247,11 +247,15 @@ public class AccountUi1 extends javax.swing.JFrame {
                                     .addGroup(jplWhiteLayout.createSequentialGroup()
                                         .addGap(6, 6, 6)
                                         .addComponent(lblCode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jplWhiteLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
+                            .addGroup(jplWhiteLayout.createSequentialGroup()
+                                .addComponent(lblInteres, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(11, 11, 11)))
-                        .addContainerGap())))
+                                .addGap(19, 19, 19)))
+                        .addContainerGap())
+                    .addGroup(jplWhiteLayout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 37, Short.MAX_VALUE))))
         );
         jplWhiteLayout.setVerticalGroup(
             jplWhiteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -273,13 +277,15 @@ public class AccountUi1 extends javax.swing.JFrame {
                         .addComponent(lblCode)))
                 .addGap(15, 15, 15)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jplWhiteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(lblInteres, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE))
                 .addGap(37, 37, 37)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(316, Short.MAX_VALUE))
+                .addContainerGap(304, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -332,6 +338,9 @@ public class AccountUi1 extends javax.swing.JFrame {
             lblProduct.setText(a.getProduct());
             lblAccountnumber.setText("Account Number: " + a.getAccountNumber());
             lblcurrency.setText("Currency: " + a.getCurrency());
+            lblInteres.setText("Ha ocurrido un error con el cálculo de nuestra tasa de intereses.\n" +
+                "Recuerda que es del 3%.\n" +
+                "Consulta de forma presencial.");
             DefaultTableModel m =(DefaultTableModel) tblAccounHolder.getModel();
             m.addRow(new Object[]{ "Code: " +           h.getCode() });
             m.addRow(new Object[]{ "Name: " +           h.getName() });
@@ -373,7 +382,7 @@ public class AccountUi1 extends javax.swing.JFrame {
         }
  }
         catch (IOException ex) {
-                        ex.printStackTrace();
+                      System.out.println("Error: " + ex.getMessage());
                     }
         
     }      }//GEN-LAST:event_btnSelectJsonActionPerformed
@@ -382,9 +391,10 @@ public class AccountUi1 extends javax.swing.JFrame {
         //Se encarga de limpiar el JSON anterior
         lblBarCode.setText(""); 
         lblCode.setText("Code: ");
-        lblProduct.setText("");
+        lblProduct.setText("BANK STATEMENT");
         lblAccountnumber.setText("Account Number: ");
         lblcurrency.setText("Currency: ");
+         lblInteres.setText(" ");
     
         ((DefaultTableModel)tblAccounHolder.getModel()).setRowCount(0);
         ((DefaultTableModel)tblTransactions.getModel()).setRowCount(0);
@@ -440,6 +450,7 @@ public class AccountUi1 extends javax.swing.JFrame {
     private javax.swing.JLabel lblBank;
     private javax.swing.JLabel lblBarCode;
     private javax.swing.JLabel lblCode;
+    private javax.swing.JLabel lblInteres;
     private javax.swing.JLabel lblProduct;
     private javax.swing.JLabel lblcurrency;
     private javax.swing.JTable tblAccounHolder;
