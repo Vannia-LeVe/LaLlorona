@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package mx.itoson.lallorona.entities;
+package mx.itson.lallorona.entities;
 
 import java.util.Date;
-import mx.itoson.lallorona.enums.TransactionType;
+import mx.itson.lallorona.enums.TransactionType;
 
 /**
  * This class represents a transaction information containing information like date, description, amount or type of transaction
