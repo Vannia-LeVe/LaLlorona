@@ -45,6 +45,7 @@ public class AccountUi1 extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jplRed = new javax.swing.JPanel();
         btnSelectJson = new javax.swing.JButton();
+        btnClean = new javax.swing.JButton();
         jplWhite = new javax.swing.JPanel();
         lblBank = new javax.swing.JLabel();
         lblProduct = new javax.swing.JLabel();
@@ -88,18 +89,34 @@ public class AccountUi1 extends javax.swing.JFrame {
             }
         });
 
+        btnClean.setBackground(new java.awt.Color(204, 0, 0));
+        btnClean.setForeground(new java.awt.Color(255, 255, 255));
+        btnClean.setText("Clean");
+        btnClean.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnClean.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCleanActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jplRedLayout = new javax.swing.GroupLayout(jplRed);
         jplRed.setLayout(jplRedLayout);
         jplRedLayout.setHorizontalGroup(
             jplRedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(btnSelectJson, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jplRedLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnClean, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jplRedLayout.setVerticalGroup(
             jplRedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jplRedLayout.createSequentialGroup()
                 .addGap(72, 72, 72)
                 .addComponent(btnSelectJson, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnClean, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(346, 346, 346))
         );
 
         jplWhite.setBackground(new java.awt.Color(255, 255, 255));
@@ -162,6 +179,7 @@ public class AccountUi1 extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblTransactions.setSelectionBackground(new java.awt.Color(204, 0, 0));
         jScrollPane2.setViewportView(tblTransactions);
 
         tblAccounHolder.setBackground(new java.awt.Color(255, 255, 255));
@@ -171,9 +189,10 @@ public class AccountUi1 extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Accoun Holder"
+                "Account Holder"
             }
         ));
+        tblAccounHolder.setSelectionBackground(new java.awt.Color(153, 0, 0));
         jScrollPane4.setViewportView(tblAccounHolder);
 
         jPanel4.setBackground(new java.awt.Color(204, 0, 0));
@@ -259,8 +278,8 @@ public class AccountUi1 extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(360, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(316, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -283,7 +302,8 @@ public class AccountUi1 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSelectJsonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectJsonActionPerformed
- FileDialog fileDialog = new FileDialog(this, "Select json file", FileDialog.LOAD);
+        //El lo que paso el profe 
+        FileDialog fileDialog = new FileDialog(this, "Select json file", FileDialog.LOAD);
         fileDialog.setVisible(true);
         
         String directory = fileDialog.getDirectory();
@@ -297,6 +317,7 @@ public class AccountUi1 extends javax.swing.JFrame {
             while ((line = reader.readLine()) != null) {
                 content.append(line).append("\n");
                 }
+            //
             String contenido = content.toString();
             BankStatement a = BankStatement.deserialized(contenido);
             AccountHolder h = a.getAccountHolder();
@@ -357,6 +378,18 @@ public class AccountUi1 extends javax.swing.JFrame {
         
     }      }//GEN-LAST:event_btnSelectJsonActionPerformed
 
+    private void btnCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCleanActionPerformed
+        //Se encarga de limpiar el JSON anterior
+        lblBarCode.setText(""); 
+        lblCode.setText("Code: ");
+        lblProduct.setText("");
+        lblAccountnumber.setText("Account Number: ");
+        lblcurrency.setText("Currency: ");
+    
+        ((DefaultTableModel)tblAccounHolder.getModel()).setRowCount(0);
+        ((DefaultTableModel)tblTransactions.getModel()).setRowCount(0);
+            }//GEN-LAST:event_btnCleanActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -393,6 +426,7 @@ public class AccountUi1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnClean;
     private javax.swing.JButton btnSelectJson;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
